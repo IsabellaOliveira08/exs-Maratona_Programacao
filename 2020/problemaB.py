@@ -1,5 +1,7 @@
+
+
 # Quantidade de alunos (1 até N)
-total_alunos = int(input(""))
+total_alunos = int(input("")) 
 # Utilizamos input para fazer a leitura
 
 # Para cada aluno fixo (garantido no grupo)( aluxo_fixo -> Contador de 1 até N)
@@ -15,12 +17,12 @@ for aluno_fixo in range(1, total_alunos + 1):
         # Acessa o último elemento
         proximo_aluno, grupo_atual = pilha[-1]
 
-        # Remove o último elemento
+        # Remove o último elemento 
         del pilha[-1]
 
         # Se não há mais alunos para decidir
-        # Imprime o grupo atual e continua para a próxima iteração
-        # de forma bonita sem colchetes
+        # Imprime o grupo atual e continua para a próxima iteração 
+        # de forma bonita sem colchetes 
         if proximo_aluno > total_alunos:
             print(" ".join(map(str, grupo_atual)) + " ")
             continue
