@@ -1,34 +1,31 @@
 import math
 
-# Número de entradas
-
+# Lê o número total de casos de teste (N) que serão avaliados
 N = int(input())
 
-# Formula de Poisson ->
-
+# Guarda a constante matemática 'e' (Número de Euler, que vale aproximadamente 2.71828).
+# Ela é a base dos logaritmos naturais e parte fundamental da fórmula de Poisson.
 e = math.e
 
-# λ representa a taxa média de eventos por unidade de tempo, que é dada por L / 60, onde L é o número de eventos em um minuto.
-# Armazenamos as respostas em uma lista para imprimir depois, evitando a mistura de cálculos e saídas.
-
+# Lista para armazenar as porcentagens calculadas de cada caso,
+# garantindo que a exibição dos resultados aconteça toda junta no final.
 respostas = []
 
+# Laço que se repete N vezes, processando uma taxa de tráfego por vez
 for _ in range(N):
 
-    # Número de conexões em um minuto (L)
-
+    # Lê o número de eventos/conexões que ocorrem no intervalo de um minuto (L)
     L = int(input())
 
-    # Calculamos a taxa média de eventos por unidade de tempo (λ) usando a fórmula λ = L / 60, onde L é o número de eventos em um minuto.
-
+    # --- CÁLCULO DA TAXA POR SEGUNDO (λ - Lambda) ---
+    # Como o enunciado ou o problema trabalha com a probabilidade por SEGUNDO,
+    # dividimos o total do minuto por 60 para descobrir a taxa média por segundo (rot).
     rot = L / 60
 
-    # A probabilidade de não ocorrer nenhum evento em um minuto é dada por P(X = 0) = (λ^0 * e^(-λ)) / 0!, que simplifica para P(X = 0) = e^(-λ).
-    # Traduzindo isso elevamos e sobre rot negativo e multiplicamos por 100 para obter a porcentagem.
-
-    prob = (e ** (-rot)) * 100
-
-    respostas.append(prob)
-
-for r in respostas:
-    print(f"{r:.2f}%")
+    # --- FÓRMULA DE POISSON SIMPLIFICADA ---
+    # A fórmula original de Poisson para k eventos é: P(X = k) = (λ^k * e^-λ) / k!
+    # Como queremos a probabilidade de NÃO ocorrer nenhum evento (k = 0):
+    # P(X = 0) = (λ^0 * e^-rot) / 0!
+    # Como λ^0 é 1, e 0! também é 1, a fórmula se simplifica perfeitamente para: e^-rot
+    
+    # Calculamos e^(-rot) e multiplicamos por
